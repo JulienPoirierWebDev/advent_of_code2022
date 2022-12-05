@@ -1,0 +1,22 @@
+{
+  "name": "advent-of-code",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JulienPoirierWebDev/advent_of_code2022.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/JulienPoirierWebDev/advent_of_code2022/issues"
+  },
+  "homepage": "https://github.com/JulienPoirierWebDev/advent_of_code2022#readme",
+  "dependencies": {
+    "jest": "^29.3.1"
+  }
+}
