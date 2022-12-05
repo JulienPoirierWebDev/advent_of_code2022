@@ -3,8 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>Day 4</title>
+
 </head>
 <body>
+<script type="module" src="./scripts/day4resolve.js"></script>
 
 <script>
     let input = "2-88,13-89\n" +
@@ -1009,35 +1011,12 @@
         "50-50,50-87"
 
     let inputArray = input.split("\n")
-    console.log(inputArray)
 
     let overlaps = 0;
     inputArray.forEach(schedule => {
-        let array = schedule.split(",");
-        let elf1Schedule =array[0];
-        let elf2Schedule = array[1];
-        console.log(elf1Schedule, elf2Schedule)
+       let test = fullyContain(schedule);
 
-        let elf1ScheduleArray = elf1Schedule.split("-");
-        let minElf1 = elf1ScheduleArray[0];
-        let maxElf1 = elf1ScheduleArray[1];
-
-        let elf2ScheduleArray = elf2Schedule.split("-");
-        let minElf2 = elf2ScheduleArray[0];
-        let maxElf2 = elf2ScheduleArray[1];
-
-        let test = true;
-
-        if((maxElf1 <= minElf2)
-        ||
-            (maxElf2 <= minElf1)
-        ) {
-            test = false
-
-        }
-        console.log(!test)
-
-        !test ? overlaps++ : null
+       test ? overlaps++:null
 
     })
 
