@@ -313,7 +313,7 @@
 
   let backpacks = input.split("\n")
 
-  let elementInDouble = []
+  let elementInDouble = [];
 
   backpacks.forEach(element => {
       //console.log(element.split(""))
@@ -333,11 +333,65 @@
       }
 
   })
-  console.log()
-  console.log(elementInDouble)
+  //console.log(elementInDouble.sort())
   let valueOfDoubleElements = elementInDouble.map(element => backpackElement.indexOf(element)+1).reduce((accumulator, currentValue) => accumulator + currentValue,0)
 
-  console.log(valueOfDoubleElements)
+  //console.log(valueOfDoubleElements)
+
+  let badges = []
+
+  backpacks.forEach(oneBackpack => {
+      let oneBackpackArray = oneBackpack.split("");
+      let indexOfFirstBackpack = backpacks.indexOf(oneBackpack);
+
+      backpacks.forEach(oneOtherBackpack => {
+          let oneOtherBackpackArray = oneOtherBackpack.split("");
+          let indexOneOtherBackpack = backpacks.indexOf(oneOtherBackpack);
+
+          backpacks.forEach(lastBackpack => {
+              let lastBackpackArray = lastBackpack.split("")
+              let indexOfLastBackpack = backpacks.indexOf(lastBackpack)
+
+              if(indexOfFirstBackpack !== indexOneOtherBackpack
+                  && indexOneOtherBackpack !== indexOfLastBackpack
+              && indexOfLastBackpack !== indexOfFirstBackpack) {
+
+                  let max = Math.max(oneBackpackArray.length, oneOtherBackpackArray.length, lastBackpackArray.length);
+                  let biggerArray = []
+                  let secondArray = []
+                  let thirdArray = []
+
+                  if(max === oneBackpackArray.length) {
+                      biggerArray = oneBackpackArray;
+                      secondArray = oneOtherBackpackArray;
+                      thirdArray = lastBackpackArray
+
+                  } else if(max === oneOtherBackpackArray.length) {
+                      biggerArray = oneOtherBackpackArray
+                      secondArray = oneBackpackArray;
+                      thirdArray = lastBackpackArray;
+                  } else if(max === lastBackpackArray.length) {
+                      biggerArray = lastBackpackArray;
+                      secondArray = oneBackpackArray;
+                      thirdArray = oneOtherBackpackArray;
+                  }
+
+                  for(let i = 0; i < max ; i++) {
+                      let existingElementInSecondArray = secondArray.indexOf(biggerArray[i]);
+                      let existingElementInThirdArray = thirdArray.indexOf(biggerArray[i]);
+
+                      if(existingElementInSecondArray !== -1 && existingElementInThirdArray !== -1) {
+                        badges.push(biggerArray[i])
+                      }
+                  }
+              }
+          })
+      })
+
+  })
+
+  console.log(badges)
+
 </script>
 </body>
 </html>
